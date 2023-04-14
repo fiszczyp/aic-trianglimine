@@ -165,6 +165,127 @@ def orca_get_energy(orcalog):
     return float(m[-1]) if m != [] else None
 
 
+def orca_check_imag_freq(orcalog):
+    """
+    Check if Orca logfile contains imaginary frequencies.
+
+    Parameters
+    ----------
+    orcalog : Path
+        A path to the Orca log file.
+
+    Returns
+    -------
+    Bool
+        True if there are imaginary frequencies.
+
+    """
+    logfile = orcalog.read_text()
+    m = re.search(r"\*\*\*imaginary mode\*\*\*", logfile)
+    return m is not None
+
+
+def orca_extract_thermochemistry(orcalog):
+    """
+    Extract thermodynamic properties from a frequency calculation.
+
+    Parameters
+    ----------
+    orcalog : Path
+        A path to the Orca log file.
+
+    Returns
+    -------
+    dict
+        A dictionary of various thermochemical properties.
+
+    """
+    log = orcalog.read_text()
+
+    temp = float(re.search(r"THERMOCHEMISTRY AT (\d*.\d*)K", log).group(1))
+
+    e_elec = float(
+        re.search(r"Electronic energy\s*...\s*(-?\d*.\d*) Eh", log).group(1)
+    )
+
+    h_total = float(
+        re.search(r"Total Enthalpy\s*...\s*(-?\d*.\d*) Eh", log).group(1)
+    )
+
+    s_elec = float(
+        re.search(r"Electronic entropy\s*...\s*(-?\d*.\d*) Eh", log).group(1)
+    )
+
+    s_vib = float(
+        re.search(r"Vibrational entropy\s*...\s*(-?\d*.\d*) Eh", log).group(1)
+    )
+
+    s_trans = float(
+        re.search(r"Translational entropy\s*...\s*(-?\d*.\d*) Eh", log).group(
+            1
+        )
+    )
+
+    sn1 = (
+        float(re.search(r"sn= 1 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn2 = (
+        float(re.search(r"sn= 2 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn3 = (
+        float(re.search(r"sn= 3 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn4 = (
+        float(re.search(r"sn= 4 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn5 = (
+        float(re.search(r"sn= 5 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn6 = (
+        float(re.search(r"sn= 6 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn7 = (
+        float(re.search(r"sn= 7 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    sn8 = (
+        float(re.search(r"sn= 8 .*S\(rot\)=\s*(-?\d*.\d*) Eh", log).group(1)),
+    )
+
+    g_tot = float(
+        re.search(
+            r"Final Gibbs free energy\s*...\s*(-?\d*.\d*) Eh",
+            log,
+        ).group(1)
+    )
+
+    thermochemistry = {
+        "Temperature": temp,
+        "Electronic Energy (Eh)": e_elec,
+        "Total Enthalpy (Eh)": h_total,
+        "Electronic Entropy (Eh)": s_elec,
+        "Vibrational Entropy (Eh)": s_vib,
+        "Translational Entropy (Eh)": s_trans,
+        "Rotational Entropy, sn=1 (Eh)": sn1[0],
+        "Rotational Entropy, sn=2 (Eh)": sn2[0],
+        "Rotational Entropy, sn=3 (Eh)": sn3[0],
+        "Rotational Entropy, sn=4 (Eh)": sn4[0],
+        "Rotational Entropy, sn=5 (Eh)": sn5[0],
+        "Rotational Entropy, sn=6 (Eh)": sn6[0],
+        "Rotational Entropy, sn=7 (Eh)": sn7[0],
+        "Rotational Entropy, sn=8 (Eh)": sn8[0],
+        "Final Gibbs Free Energy (Eh)": g_tot,
+    }
+
+    return thermochemistry
+
+
 def xtb_opt(
     infile,
     basename,

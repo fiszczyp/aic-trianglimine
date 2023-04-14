@@ -7,12 +7,20 @@ xtb
 spyrmsd
 
 """
-from typing import Type
-from trianglimines.dft import xtb_opt, xtb_crest, orca_input, orca_get_energy
-from trianglimines.molecule import Molecule, remove_redundant_conformers
-from params import ncpus, mols_json, structures, dft_files, opt_struct
 import json
 from shutil import copyfile
+from typing import Type
+
+from params import dft_files, mols_json, ncpus, opt_struct, structures
+from trianglimines.dft import (
+    orca_check_imag_freq,
+    orca_get_energy,
+    orca_extract_thermochemistry,
+    orca_input,
+    xtb_crest,
+    xtb_opt,
+)
+from trianglimines.molecule import Molecule, remove_redundant_conformers
 
 
 def _perform_crest(m):
@@ -93,21 +101,35 @@ def _rank_conformers_dft(m: Type[Molecule]):
     )
 
 
+def _frequency_analysis(m: Type[Molecule]):
+    freq_output_path = dft_files / "b97-3c-chcl3" / "freq" / m.inchikey
+    freq_output = [*freq_output_path.glob("orca_calc_*.out")][0]
+
+    m.imaginary_freq = orca_check_imag_freq(freq_output)
+
+    if not m.imaginary_freq:
+        m.thermochemistry = orca_extract_thermochemistry(freq_output)
+
+
 if __name__ == "__main__":
     with open(mols_json, "r") as f:
         molecules = [Molecule.from_dict(m) for m in json.load(f)]
 
     for m in molecules:
-        if not hasattr(m, "CREST_completed") or m.CREST_completed is False:
+        if not hasattr(m, "CREST_completed") or not m.CREST_completed:
             _perform_crest(m)
 
     for m in molecules:
-        if not hasattr(m, "confs_optimised") or m.confs_optimised is False:
+        if not hasattr(m, "confs_optimised") or not m.confs_optimised:
             _optimise_conformers_dft(m)
 
     for m in molecules:
-        # if not hasattr(m, "lowest_conf") or m.lowest_conf == 0:
-        _rank_conformers_dft(m)
+        if not hasattr(m, "lowest_conf"):
+            _rank_conformers_dft(m)
+
+    for m in molecules:
+        if not hasattr(m, "imaginary_freq") or m.imaginary_freq:
+            _frequency_analysis(m)
 
     with open(mols_json, "w", newline="\n") as f:
         json.dump([m.to_dict() for m in molecules], f, indent=4)

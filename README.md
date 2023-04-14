@@ -36,3 +36,8 @@ With the embedded structures at hand, CREST is used with GFN2-xTB to perform
 conformational search. Redundant conformers are then removed with an RMSD
 thershold of 0.5Å using sPyRMSD. Symmetry-corrected RMSD calculations are
 necessary for the symmetric [2+2] and [3+3] macrocycles.
+
+Each conformer is optimised (using Orca) with the [B97-3c][7] functional and
+confirmed to be a minimum with a frequency calculation.
+
+[7]: https://doi.org/10.1063/1.5012601

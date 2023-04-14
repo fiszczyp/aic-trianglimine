@@ -9,6 +9,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -6453.622503922522
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -6453.62250385,
+            "Total Enthalpy (Eh)": -6453.06987722,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.04869748,
+            "Translational Entropy (Eh)": 0.02136664,
+            "Rotational Entropy, sn=1 (Eh)": 0.01832362,
+            "Rotational Entropy, sn=2 (Eh)": 0.01766916,
+            "Rotational Entropy, sn=3 (Eh)": 0.01728633,
+            "Rotational Entropy, sn=4 (Eh)": 0.01701471,
+            "Rotational Entropy, sn=5 (Eh)": 0.01680402,
+            "Rotational Entropy, sn=6 (Eh)": 0.01663187,
+            "Rotational Entropy, sn=7 (Eh)": 0.01648633,
+            "Rotational Entropy, sn=8 (Eh)": 0.01636025,
+            "Final Gibbs Free Energy (Eh)": -6453.15826495
         }
     },
     {
@@ -21,6 +39,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -6453.623785790212
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -6453.62378563,
+            "Total Enthalpy (Eh)": -6453.07136955,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.04825832,
+            "Translational Entropy (Eh)": 0.02136664,
+            "Rotational Entropy, sn=1 (Eh)": 0.01834437,
+            "Rotational Entropy, sn=2 (Eh)": 0.01768992,
+            "Rotational Entropy, sn=3 (Eh)": 0.01730708,
+            "Rotational Entropy, sn=4 (Eh)": 0.01703546,
+            "Rotational Entropy, sn=5 (Eh)": 0.01682477,
+            "Rotational Entropy, sn=6 (Eh)": 0.01665263,
+            "Rotational Entropy, sn=7 (Eh)": 0.01650708,
+            "Rotational Entropy, sn=8 (Eh)": 0.016381,
+            "Final Gibbs Free Energy (Eh)": -6453.15933888
         }
     },
     {
@@ -33,6 +69,24 @@
         "lowest_conf": "7",
         "DFT_energy": {
             "B97-3c (Eh)": -9680.44499083084
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -9680.44499074,
+            "Total Enthalpy (Eh)": -9679.61480709,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.08066044,
+            "Translational Entropy (Eh)": 0.02194088,
+            "Rotational Entropy, sn=1 (Eh)": 0.01942885,
+            "Rotational Entropy, sn=2 (Eh)": 0.01877439,
+            "Rotational Entropy, sn=3 (Eh)": 0.01839156,
+            "Rotational Entropy, sn=4 (Eh)": 0.01811993,
+            "Rotational Entropy, sn=5 (Eh)": 0.01790925,
+            "Rotational Entropy, sn=6 (Eh)": 0.0177371,
+            "Rotational Entropy, sn=7 (Eh)": 0.01759156,
+            "Rotational Entropy, sn=8 (Eh)": 0.01746548,
+            "Final Gibbs Free Energy (Eh)": -9679.73683726
         }
     },
     {
@@ -45,6 +99,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -9680.44438607902
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -9680.44438617,
+            "Total Enthalpy (Eh)": -9679.61451035,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.08088477,
+            "Translational Entropy (Eh)": 0.02194088,
+            "Rotational Entropy, sn=1 (Eh)": 0.01930063,
+            "Rotational Entropy, sn=2 (Eh)": 0.01864617,
+            "Rotational Entropy, sn=3 (Eh)": 0.01826334,
+            "Rotational Entropy, sn=4 (Eh)": 0.01799172,
+            "Rotational Entropy, sn=5 (Eh)": 0.01778103,
+            "Rotational Entropy, sn=6 (Eh)": 0.01760888,
+            "Rotational Entropy, sn=7 (Eh)": 0.01746334,
+            "Rotational Entropy, sn=8 (Eh)": 0.01733726,
+            "Final Gibbs Free Energy (Eh)": -9679.73663664
         }
     },
     {
@@ -57,6 +129,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -3033.186351906836
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -3033.18635189,
+            "Total Enthalpy (Eh)": -3033.06867325,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.0124692,
+            "Translational Entropy (Eh)": 0.01994229,
+            "Rotational Entropy, sn=1 (Eh)": 0.01521732,
+            "Rotational Entropy, sn=2 (Eh)": 0.01456287,
+            "Rotational Entropy, sn=3 (Eh)": 0.01418003,
+            "Rotational Entropy, sn=4 (Eh)": 0.01390841,
+            "Rotational Entropy, sn=5 (Eh)": 0.01369772,
+            "Rotational Entropy, sn=6 (Eh)": 0.01352558,
+            "Rotational Entropy, sn=7 (Eh)": 0.01338003,
+            "Rotational Entropy, sn=8 (Eh)": 0.01325395,
+            "Final Gibbs Free Energy (Eh)": -3033.11630206
         }
     },
     {
@@ -69,6 +159,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -346.426871308577
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -346.42687134,
+            "Total Enthalpy (Eh)": -346.21499706,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.00864662,
+            "Translational Entropy (Eh)": 0.0190592,
+            "Rotational Entropy, sn=1 (Eh)": 0.01344428,
+            "Rotational Entropy, sn=2 (Eh)": 0.01278983,
+            "Rotational Entropy, sn=3 (Eh)": 0.01240699,
+            "Rotational Entropy, sn=4 (Eh)": 0.01213537,
+            "Rotational Entropy, sn=5 (Eh)": 0.01192468,
+            "Rotational Entropy, sn=6 (Eh)": 0.01175254,
+            "Rotational Entropy, sn=7 (Eh)": 0.01160699,
+            "Rotational Entropy, sn=8 (Eh)": 0.01148091,
+            "Final Gibbs Free Energy (Eh)": -346.25614716
         }
     },
     {
@@ -81,6 +189,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -346.426871115902
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -346.42687114,
+            "Total Enthalpy (Eh)": -346.21499729,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 0.00864716,
+            "Translational Entropy (Eh)": 0.0190592,
+            "Rotational Entropy, sn=1 (Eh)": 0.01344428,
+            "Rotational Entropy, sn=2 (Eh)": 0.01278983,
+            "Rotational Entropy, sn=3 (Eh)": 0.01240699,
+            "Rotational Entropy, sn=4 (Eh)": 0.01213537,
+            "Rotational Entropy, sn=5 (Eh)": 0.01192468,
+            "Rotational Entropy, sn=6 (Eh)": 0.01175254,
+            "Rotational Entropy, sn=7 (Eh)": 0.01160699,
+            "Rotational Entropy, sn=8 (Eh)": 0.01148091,
+            "Final Gibbs Free Energy (Eh)": -346.25614793
         }
     },
     {
@@ -93,6 +219,24 @@
         "lowest_conf": "0",
         "DFT_energy": {
             "B97-3c (Eh)": -76.405572772732
+        },
+        "imaginary_freq": false,
+        "thermochemistry": {
+            "Temperature": 298.15,
+            "Electronic Energy (Eh)": -76.40557277,
+            "Total Enthalpy (Eh)": -76.38074092,
+            "Electronic Entropy (Eh)": 0.0,
+            "Vibrational Entropy (Eh)": 2.55e-06,
+            "Translational Entropy (Eh)": 0.0164438,
+            "Rotational Entropy, sn=1 (Eh)": 0.00564535,
+            "Rotational Entropy, sn=2 (Eh)": 0.00499089,
+            "Rotational Entropy, sn=3 (Eh)": 0.00460806,
+            "Rotational Entropy, sn=4 (Eh)": 0.00433643,
+            "Rotational Entropy, sn=5 (Eh)": 0.00412575,
+            "Rotational Entropy, sn=6 (Eh)": 0.0039536,
+            "Rotational Entropy, sn=7 (Eh)": 0.00380806,
+            "Rotational Entropy, sn=8 (Eh)": 0.00368198,
+            "Final Gibbs Free Energy (Eh)": -76.40217816
         }
     }
 ]
