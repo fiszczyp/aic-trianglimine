@@ -13,6 +13,7 @@ def orca_input(
     opt=False,
     freq=False,
     convergence="",
+    maxiter=10000,
     solvent=None,
     ncpus=20,
     memory=8000,
@@ -87,9 +88,11 @@ def orca_input(
 
     orca_input = "\n".join(
         [
+            "!AutoStart",
             f"!{functional} {basis} {opt_flag}{freq_flag} LARGEPRINT",
             f"%MAXCORE {memory}",
             f"%PAL NPROCS {ncpus} END",
+            f"%SCF MAXITER {maxiter} END",
             smd_block,
             "* xyzfile 0 1 coords.xyz",
             "",

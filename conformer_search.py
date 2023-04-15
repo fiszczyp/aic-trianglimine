@@ -3,6 +3,7 @@ Perform CREST search and remove redudant conformers.
 
 Requires
 --------
+orca
 xtb
 spyrmsd
 
@@ -14,13 +15,15 @@ from typing import Type
 from params import dft_files, mols_json, ncpus, opt_struct, structures
 from trianglimines.dft import (
     orca_check_imag_freq,
-    orca_get_energy,
     orca_extract_thermochemistry,
+    orca_get_energy,
     orca_input,
     xtb_crest,
     xtb_opt,
 )
 from trianglimines.molecule import Molecule, remove_redundant_conformers
+
+__author__ = "Filip T. Szczypiński"
 
 
 def _perform_crest(m):
@@ -101,6 +104,25 @@ def _rank_conformers_dft(m: Type[Molecule]):
     )
 
 
+def _frequency_dft(m: Type[Molecule]):
+    lowest_conf = f"{m.inchikey}_{m.lowest_conf}"
+    opt_confs_path = dft_files / "b97-3c-chcl3" / "opt" / m.inchikey
+    freq_path = dft_files / "b97-3c-chcl3" / "freq" / m.inchikey
+
+    orca_input(
+        workdir=(freq_path),
+        coords_xyz=(opt_confs_path / lowest_conf / "orca_calc.xyz"),
+        functional="B97-3c",
+        opt=False,
+        freq=True,
+        solvent="CHLOROFORM",
+        ncpus=ncpus,
+        memory=8000,
+    )
+
+    m.freq_completed = True
+
+
 def _frequency_analysis(m: Type[Molecule]):
     freq_output_path = dft_files / "b97-3c-chcl3" / "freq" / m.inchikey
     freq_output = [*freq_output_path.glob("orca_calc_*.out")][0]
@@ -126,6 +148,10 @@ if __name__ == "__main__":
     for m in molecules:
         if not hasattr(m, "lowest_conf"):
             _rank_conformers_dft(m)
+
+    for m in molecules:
+        if not hasattr(m, "freq_completed") or not m.freq_completed:
+            _frequency_dft(m)
 
     for m in molecules:
         if not hasattr(m, "imaginary_freq") or m.imaginary_freq:

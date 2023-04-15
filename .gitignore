@@ -29,3 +29,4 @@ venv.bak/
 # Large DFT files
 data/dft_files/**
 structures_TODO/**
+TODO.md

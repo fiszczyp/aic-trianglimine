@@ -12,3 +12,13 @@ mols_json = data / "molecules.json"
 structures = data / "conformers"
 dft_files = data / "dft_files"
 opt_struct = data / "opt_struct"
+
+sp_basis_sets = ["def2-QZVP"]
+sp_functionals = [
+    "PBE0 D3BJ",
+    "PW6B95 D3BJ",
+    "M062X D3ZERO",
+    "wB97X-D3BJ",
+    "wB97X-V",
+    "wB97M-V",
+]
