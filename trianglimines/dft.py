@@ -1,10 +1,11 @@
 """Functions to help with launching xTB and DFT codes."""
 
+import multiprocessing as mp
 import re
 import subprocess
-import multiprocessing as mp
 from functools import partial
 from shutil import copyfile
+
 from .helpers import tail
 
 

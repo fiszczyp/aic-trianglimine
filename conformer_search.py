@@ -18,16 +18,16 @@ from params import (
     mols_json,
     ncpus,
     opt_struct,
-    structures,
     orca_path,
+    structures,
 )
 from trianglimines.dft import (
     orca_check_imag_freq,
     orca_check_termination,
     orca_extract_thermochemistry,
     orca_get_energy,
-    orca_run_parallel,
     orca_input,
+    orca_run_parallel,
     xtb_crest,
     xtb_opt,
 )
