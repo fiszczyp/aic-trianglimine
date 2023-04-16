@@ -12,11 +12,21 @@ import json
 from shutil import copyfile
 from typing import Type
 
-from params import dft_files, mols_json, ncpus, opt_struct, structures
+from params import (
+    analysis_only,
+    dft_files,
+    mols_json,
+    ncpus,
+    opt_struct,
+    structures,
+    orca_path,
+)
 from trianglimines.dft import (
     orca_check_imag_freq,
+    orca_check_termination,
     orca_extract_thermochemistry,
     orca_get_energy,
+    orca_run_parallel,
     orca_input,
     xtb_crest,
     xtb_opt,
@@ -74,6 +84,9 @@ def _optimise_conformers_dft(m: Type[Molecule]):
             memory=3000,
         )
 
+    orca_inps = [inp for inp in opt_confs_path.glob("*/*.inp")]
+    orca_run_parallel(orca_inps=orca_inps, orca_path=orca_path)
+
     m.confs_optimised = True
 
 
@@ -118,19 +131,25 @@ def _frequency_dft(m: Type[Molecule]):
         solvent="CHLOROFORM",
         ncpus=ncpus,
         memory=8000,
+        slurm=True,
+        submit=True,
     )
 
-    m.freq_completed = True
+    m.freq_submitted = True
 
 
 def _frequency_analysis(m: Type[Molecule]):
     freq_output_path = dft_files / "b97-3c-chcl3" / "freq" / m.inchikey
     freq_output = [*freq_output_path.glob("orca_calc_*.out")][0]
+    m.freq_completed = orca_check_termination(freq_output)
 
-    m.imaginary_freq = orca_check_imag_freq(freq_output)
+    if m.freq_completed:
+        m.imaginary_freq = orca_check_imag_freq(freq_output)
+        if not m.imaginary_freq:
+            m.thermochemistry = orca_extract_thermochemistry(freq_output)
 
-    if not m.imaginary_freq:
-        m.thermochemistry = orca_extract_thermochemistry(freq_output)
+    else:
+        print(f"{m.inchikey} frequency calculation TIMED OUT.")
 
 
 if __name__ == "__main__":
@@ -138,7 +157,9 @@ if __name__ == "__main__":
         molecules = [Molecule.from_dict(m) for m in json.load(f)]
 
     for m in molecules:
-        if not hasattr(m, "CREST_completed") or not m.CREST_completed:
+        if not (
+            hasattr(m, "CREST_completed") or m.CREST_completed or analysis_only
+        ):
             _perform_crest(m)
 
     for m in molecules:
@@ -150,11 +171,13 @@ if __name__ == "__main__":
             _rank_conformers_dft(m)
 
     for m in molecules:
-        if not hasattr(m, "freq_completed") or not m.freq_completed:
+        if not (
+            hasattr(m, "freq_submitted") or m.freq_submitted or analysis_only
+        ):
             _frequency_dft(m)
 
     for m in molecules:
-        if not hasattr(m, "imaginary_freq") or m.imaginary_freq:
+        if not hasattr(m, "freq_completed") or not m.freq_completed:
             _frequency_analysis(m)
 
     with open(mols_json, "w", newline="\n") as f:

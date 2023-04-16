@@ -2,9 +2,14 @@
 
 from pathlib import Path
 
+analysis_only = True
+
 random_seed = 1644321874
-ncpus = 20
+ncpus = 8
+ncpus_cluster = 20
+ncpus_local = 8
 project = Path.cwd()
+orca_path = r"C:\orca\orca.exe"
 
 data = project / "data"
 input_mols_json = data / "input_molecules.json"

@@ -2,7 +2,10 @@
 
 import re
 import subprocess
+import multiprocessing as mp
+from functools import partial
 from shutil import copyfile
+from .helpers import tail
 
 
 def orca_input(
@@ -111,7 +114,7 @@ def orca_input(
             "# Both standard output and error are directed to a file",
             "#SBATCH -o slurm_orca.out",
             "# Request the partition",
-            "#SBATCH -p nodes,cooper",
+            "#SBATCH -p cooper,nodes",
             "# Request the number of nodes",
             "#SBATCH -N 1",
             "# Request the number of cores",
@@ -121,7 +124,7 @@ def orca_input(
             "",
             "module purge",
             "module load apps/anaconda3",
-            "module load load apps/orca",
+            "module load load apps/orca/5.0.1",
             "",
             "$ORCADIR/orca orca_calc.inp > orca_calc_$SLURM_JOB_ID.out",
         ]
@@ -186,6 +189,25 @@ def orca_check_imag_freq(orcalog):
     logfile = orcalog.read_text()
     m = re.search(r"\*\*\*imaginary mode\*\*\*", logfile)
     return m is not None
+
+
+def orca_check_termination(orcalog):
+    """
+    Check if Orca terminated normally.
+
+    Parameters
+    ----------
+    orcalog : Path
+        A path to the Orca log file.
+
+    Returns
+    -------
+    Bool
+        True if Orca terminated normally
+
+    """
+    log_tail = [i.strip() for i in tail(orcalog, 10)]
+    return "****ORCA TERMINATED NORMALLY****" in log_tail
 
 
 def orca_extract_thermochemistry(orcalog):
@@ -287,6 +309,56 @@ def orca_extract_thermochemistry(orcalog):
     }
 
     return thermochemistry
+
+
+def orca_run(inp, orca_path):
+    """
+    Run ORCA calculation.
+
+    Parameters
+    ----------
+    inp : Path
+        Path to the ORCA input file.
+
+    orca_path : Path
+        Path to the ORCA executable.
+
+    Returns
+    -------
+    None
+
+    """
+    with open(inp.with_suffix(".out"), "w", newline="\n") as outfile:
+        subprocess.run(
+            [orca_path, inp.name],
+            stdout=outfile,
+            stderr=subprocess.PIPE,
+            cwd=inp.parent,
+        )
+
+
+def orca_run_parallel(orca_inps, orca_path, processes=3):
+    """
+    Run ORCA calculation in parallel.
+
+    Parameters
+    ----------
+    inp : Path
+        Path to the ORCA input file.
+
+    orca_path : Path
+        Path to the ORCA executable.
+
+    processes : int
+        Number of parallel ORCA calculations.
+
+    Returns
+    -------
+    None
+
+    """
+    with mp.Pool(processes=processes) as pool:
+        pool.map(partial(orca_run, orca_path=orca_path), orca_inps)
 
 
 def xtb_opt(

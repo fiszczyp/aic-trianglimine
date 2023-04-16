@@ -28,7 +28,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.01636025,
             "Final Gibbs Free Energy (Eh)": -6453.15826495
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/C28H30Br2N4/c29-23-11-19-9-21(13-23)17-33-27-7-3-4-8-28(27)34-18-22-10-20(12-24(30)14-22)16-32-26-6-2-1-5-25(26)31-15-19/h9-18,25-28H,1-8H2/b31-15+,32-16+,33-17+,34-18+/t25-,26-,27+,28+",
@@ -59,7 +60,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.016381,
             "Final Gibbs Free Energy (Eh)": -6453.15933888
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/C42H45Br3N6/c43-34-16-28-13-30(18-34)24-48-39-9-3-4-10-40(39)50-26-32-15-33(21-36(45)20-32)27-51-42-12-6-5-11-41(42)49-25-31-14-29(17-35(44)19-31)23-47-38-8-2-1-7-37(38)46-22-28/h13-27,37-42H,1-12H2/b46-22+,47-23+,48-24+,49-25+,50-26+,51-27+/t37-,38-,39-,40-,41-,42-/m1/s1",
@@ -90,7 +92,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.01746548,
             "Final Gibbs Free Energy (Eh)": -9679.73683726
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/C42H45Br3N6/c43-34-16-28-13-30(18-34)24-48-39-9-3-4-10-40(39)50-26-32-15-33(21-36(45)20-32)27-51-42-12-6-5-11-41(42)49-25-31-14-29(17-35(44)19-31)23-47-38-8-2-1-7-37(38)46-22-28/h13-27,37-42H,1-12H2/b46-22+,47-23+,48-24+,49-25+,50-26+,51-27+/t37-,38-,39-,40-,41+,42+/m1/s1",
@@ -121,7 +124,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.01733726,
             "Final Gibbs Free Energy (Eh)": -9679.73663664
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/C8H5BrO2/c9-8-2-6(4-10)1-7(3-8)5-11/h1-5H",
@@ -152,7 +156,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.01325395,
             "Final Gibbs Free Energy (Eh)": -3033.11630206
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/C6H14N2/c7-5-3-1-2-4-6(5)8/h5-6H,1-4,7-8H2/t5-,6-/m1/s1",
@@ -183,7 +188,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.01148091,
             "Final Gibbs Free Energy (Eh)": -346.25614716
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/C6H14N2/c7-5-3-1-2-4-6(5)8/h5-6H,1-4,7-8H2/t5-,6-/m0/s1",
@@ -214,7 +220,8 @@
             "Rotational Entropy, sn=8 (Eh)": 0.01148091,
             "Final Gibbs Free Energy (Eh)": -346.25614793
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     },
     {
         "inchi": "InChI=1S/H2O/h1H2",
@@ -245,6 +252,7 @@
             "Rotational Entropy, sn=8 (Eh)": 0.00368198,
             "Final Gibbs Free Energy (Eh)": -76.40217816
         },
-        "freq_completed": true
+        "freq_completed": true,
+        "freq_submitted": true
     }
 ]

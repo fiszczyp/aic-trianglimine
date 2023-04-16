@@ -7,6 +7,8 @@ import numpy as np
 import rdkit.Chem.AllChem as rdchem
 from spyrmsd import io, rmsd
 
+from .helpers import write_xyz_file
+
 
 class Molecule:
     """
@@ -189,32 +191,3 @@ def remove_redundant_conformers(xyzfile, odir, basename, rthr=0.5):
             natoms=len(coords),
             title=f"{basename}",
         )
-
-
-def write_xyz_file(coords, fname, natoms=0, title=""):
-    """
-    Write xyz file.
-
-    Parameters
-    ----------
-    coords : [atom x y z]
-        A list of atom symbols/numbers and x, y, z coords in Anstrom.
-    ofile : Path
-        A path where the xyz file will be written.
-    natoms : int
-        Number of atoms (first line of the xyz file). If not specified, it will
-        be inferred from the the length of the coords list.
-    title : str
-        Title of the xyz file (second line of the file).
-
-    """
-    if natoms == 0:
-        natoms = len(coords)
-
-    xyz = "\n".join((str(natoms), f"{title}", *coords))
-
-    if not fname.parent.exists():
-        fname.parent.mkdir(parents=True)
-
-    with open(fname, "w", newline="\n") as f:
-        f.write(xyz)
