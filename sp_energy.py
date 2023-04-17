@@ -66,7 +66,8 @@ def _sp_dft(
         submit=(not analysis_only),
     )
 
-    m.DFT_energy = {method: "submitted"}
+    if not analysis_only:
+        m.DFT_energy = {method: "submitted"}
 
 
 def _sp_analysis(
