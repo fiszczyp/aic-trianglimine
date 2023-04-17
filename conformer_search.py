@@ -82,11 +82,11 @@ def _optimise_conformers_dft(m: Molecule) -> None:
             ncpus=ncpus,
             memory=3000,
         )
+    if not analysis_only:
+        orca_inps = [inp for inp in opt_confs_path.glob("*/*.inp")]
+        orca_run_parallel(orca_inps=orca_inps, orca_path=orca_path)
 
-    orca_inps = [inp for inp in opt_confs_path.glob("*/*.inp")]
-    orca_run_parallel(orca_inps=orca_inps, orca_path=orca_path)
-
-    m.confs_optimised = True
+        m.confs_optimised = True
 
 
 def _rank_conformers_dft(m: Molecule) -> None:
@@ -131,10 +131,11 @@ def _frequency_dft(m: Molecule) -> None:
         ncpus=ncpus,
         memory=8000,
         slurm=True,
-        submit=True,
+        submit=(not analysis_only),
     )
 
-    m.freq_submitted = True
+    if not analysis_only:
+        m.freq_submitted = True
 
 
 def _frequency_analysis(m: Molecule) -> None:
@@ -170,9 +171,7 @@ if __name__ == "__main__":
             _rank_conformers_dft(m)
 
     for m in molecules:
-        if not (
-            hasattr(m, "freq_submitted") or m.freq_submitted or analysis_only
-        ):
+        if not hasattr(m, "freq_submitted") or m.freq_submitted:
             _frequency_dft(m)
 
     for m in molecules:
