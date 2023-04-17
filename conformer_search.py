@@ -10,7 +10,6 @@ spyrmsd
 """
 import json
 from shutil import copyfile
-from typing import Type
 
 from params import (
     analysis_only,
@@ -36,7 +35,7 @@ from trianglimines.molecule import Molecule, remove_redundant_conformers
 __author__ = "Filip T. Szczypiński"
 
 
-def _perform_crest(m):
+def _perform_crest(m: Molecule) -> None:
     odir = structures / m.inchikey
     embedded = odir / f"{m.inchikey}_ETKDG_MMFF.xyz"
 
@@ -68,7 +67,7 @@ def _perform_crest(m):
     m.CREST_completed = True
 
 
-def _optimise_conformers_dft(m: Type[Molecule]):
+def _optimise_conformers_dft(m: Molecule) -> None:
     confs_path = structures / m.inchikey / "CREST_GFN2" / "confs"
     opt_confs_path = dft_files / "b97-3c-chcl3" / "opt" / m.inchikey
 
@@ -90,7 +89,7 @@ def _optimise_conformers_dft(m: Type[Molecule]):
     m.confs_optimised = True
 
 
-def _rank_conformers_dft(m: Type[Molecule]):
+def _rank_conformers_dft(m: Molecule) -> None:
     opt_confs_path = dft_files / "b97-3c-chcl3" / "opt" / m.inchikey
 
     lowest_e = 0
@@ -117,7 +116,7 @@ def _rank_conformers_dft(m: Type[Molecule]):
     )
 
 
-def _frequency_dft(m: Type[Molecule]):
+def _frequency_dft(m: Molecule) -> None:
     lowest_conf = f"{m.inchikey}_{m.lowest_conf}"
     opt_confs_path = dft_files / "b97-3c-chcl3" / "opt" / m.inchikey
     freq_path = dft_files / "b97-3c-chcl3" / "freq" / m.inchikey
@@ -138,9 +137,9 @@ def _frequency_dft(m: Type[Molecule]):
     m.freq_submitted = True
 
 
-def _frequency_analysis(m: Type[Molecule]):
+def _frequency_analysis(m: Molecule) -> None:
     freq_output_path = dft_files / "b97-3c-chcl3" / "freq" / m.inchikey
-    freq_output = [*freq_output_path.glob("orca_calc_*.out")][0]
+    freq_output = [*freq_output_path.glob("orca_calc_*.out")][-1]
     m.freq_completed = orca_check_termination(freq_output)
 
     if m.freq_completed:
