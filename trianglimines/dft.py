@@ -362,6 +362,21 @@ def orca_run_parallel(orca_inps, orca_path, processes=3):
         pool.map(partial(orca_run, orca_path=orca_path), orca_inps)
 
 
+def to_eV(x: float) -> float:
+    """Convert a.u. to eV."""
+    return x * 27.2107
+
+
+def to_kcal(x: float) -> float:
+    """Convert a.u. to kcal/mol."""
+    return x * 627.503
+
+
+def to_kj(x: float) -> float:
+    """Convert a.u. to kJ/mol."""
+    return x * 2625.5
+
+
 def xtb_opt(
     infile,
     basename,

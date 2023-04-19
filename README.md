@@ -60,3 +60,37 @@ Final energetics were obtained with single point energies at a DFT level of theo
 [19]: https://doi.org/10.1039/C3CP54374A
 [20]: https://doi.org/10.1063/1.495264
 [21]: https://doi.org/10.1063/1.3521275
+
+## Formation energy calculations: `formation_energy.py`
+
+Formation energies were obtained following standard thermodynamic relationships.
+Electronic formation energy is simply the difference in final single point energies
+calculated at the DFT level of theory. As thermal corrections depend predominantly on
+geometry, they were extracted from the relatively cheap frequency calculation
+using the B97-3c method. All thermochemical properties were calculated at 298.15K.
+
+Enthalpy is calculated as U + kB*T, where U is the inner energy, i.e. the sum of
+the total electronic single point energy, the zero point energy and the thermal
+energy due to vibrations, rotations, and translations:
+
+(1) U = E(el) + E(ZPE) + E(vib) + E(rot) + E(trans)
+
+(2) H = U + kB*T
+
+Entropy contributions are the sum of electronic, vibrational, rotational and
+translational entropy:
+
+(3) T\*S = T\*(S(el)+S(vib)+S(rot)+S(trans))
+
+Rotational entropy was calculated assuming different symmetry numbers, sn.
+The symmetry numbers for aldehyde (C2v), amine (C2) and water (C2v) are all 2.
+Depending on the degree if idealisation of the macrocycle structures,
+the symmetry numbers for the trianglimines can be taken as:
+
+* For [2+2]-RR: 1 (no symmetry), 2 (C2 bowl) or 4 (D2 planar aromatic rings).
+* For [2+2]-RR: 1 (no symmetry) or 2 (C2h).
+* For [3+3]-RRR: 1 (no symmetry), 3 (C3 bowl) or 6 (D3 planar aromatic rings).
+* For [3+3]-RRR: 1 (no symmetry) or 2 (C2).
+
+Resulting differences to the Gibbs free energies of formation are within 5 kJ/mol,
+which is probably within the error of the method.

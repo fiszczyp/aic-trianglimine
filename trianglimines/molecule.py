@@ -2,6 +2,7 @@
 
 import random
 from itertools import combinations
+from typing import Sequence, Tuple
 
 import numpy as np
 import rdkit.Chem.AllChem as rdchem
@@ -117,6 +118,23 @@ class Molecule:
         )
 
         return rdmol_h, confs_e
+
+    def get_imines(self) -> Sequence[Tuple[int, int, int]]:
+        """
+        Get imines in the molecule.
+
+        Returns
+        -------
+        Sequence[Tuple[int, int, int]]
+            A sequence of tuples of atom ids coresponding to the imines.
+
+        """
+        rdmol = rdchem.MolFromInchi(self.inchi)
+        imine = rdchem.MolFromSmarts(
+            "[CX3;$([C]([#6])[#6]),$([CH][#6])]=[NX2][#6]"
+        )
+
+        return rdmol.GetSubstructMatches(imine)
 
 
 def remove_redundant_conformers(xyzfile, odir, basename, rthr=0.5):

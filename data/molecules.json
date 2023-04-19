@@ -1,7 +1,7 @@
 [
     {
         "inchi": "InChI=1S/C28H30Br2N4/c29-23-11-19-9-21(13-23)17-33-27-7-3-4-8-28(27)34-18-22-10-20(12-24(30)14-22)16-32-26-6-2-1-5-25(26)31-15-19/h9-18,25-28H,1-8H2/b31-15+,32-16+,33-17+,34-18+/t25-,26-,27-,28-/m1/s1",
-        "name": "bromo, 2+2, RR",
+        "name": "[2+2]-RR",
         "inchikey": "RUQARIUHZQLYSV-BVJTVBEQSA-N",
         "ETKDG_embedded": true,
         "CREST_completed": true,
@@ -46,7 +46,7 @@
     },
     {
         "inchi": "InChI=1S/C28H30Br2N4/c29-23-11-19-9-21(13-23)17-33-27-7-3-4-8-28(27)34-18-22-10-20(12-24(30)14-22)16-32-26-6-2-1-5-25(26)31-15-19/h9-18,25-28H,1-8H2/b31-15+,32-16+,33-17+,34-18+/t25-,26-,27+,28+",
-        "name": "bromo, 2+2, RS",
+        "name": "[2+2]-RS",
         "inchikey": "RUQARIUHZQLYSV-WZHDYRIBSA-N",
         "ETKDG_embedded": true,
         "CREST_completed": true,
@@ -91,7 +91,7 @@
     },
     {
         "inchi": "InChI=1S/C42H45Br3N6/c43-34-16-28-13-30(18-34)24-48-39-9-3-4-10-40(39)50-26-32-15-33(21-36(45)20-32)27-51-42-12-6-5-11-41(42)49-25-31-14-29(17-35(44)19-31)23-47-38-8-2-1-7-37(38)46-22-28/h13-27,37-42H,1-12H2/b46-22+,47-23+,48-24+,49-25+,50-26+,51-27+/t37-,38-,39-,40-,41-,42-/m1/s1",
-        "name": "bromo, 3+3, RRR",
+        "name": "[3+3]-RRR",
         "inchikey": "HPVISMWRRURKMP-GIRTXBHHSA-N",
         "ETKDG_embedded": true,
         "CREST_completed": true,
@@ -136,7 +136,7 @@
     },
     {
         "inchi": "InChI=1S/C42H45Br3N6/c43-34-16-28-13-30(18-34)24-48-39-9-3-4-10-40(39)50-26-32-15-33(21-36(45)20-32)27-51-42-12-6-5-11-41(42)49-25-31-14-29(17-35(44)19-31)23-47-38-8-2-1-7-37(38)46-22-28/h13-27,37-42H,1-12H2/b46-22+,47-23+,48-24+,49-25+,50-26+,51-27+/t37-,38-,39-,40-,41+,42+/m1/s1",
-        "name": "bromo, 3+3, RRS",
+        "name": "[3+3]-RRS",
         "inchikey": "HPVISMWRRURKMP-FQUPQTDFSA-N",
         "ETKDG_embedded": true,
         "CREST_completed": true,
@@ -181,7 +181,7 @@
     },
     {
         "inchi": "InChI=1S/C8H5BrO2/c9-8-2-6(4-10)1-7(3-8)5-11/h1-5H",
-        "name": "bromo",
+        "name": "ald",
         "inchikey": "QAQOLRCTTDVBAK-UHFFFAOYSA-N",
         "ETKDG_embedded": true,
         "CREST_completed": true,
@@ -316,7 +316,7 @@
     },
     {
         "inchi": "InChI=1S/H2O/h1H2",
-        "name": "Water",
+        "name": "water",
         "inchikey": "XLYOFNOQVPJJNP-UHFFFAOYSA-N",
         "ETKDG_embedded": true,
         "CREST_completed": true,
