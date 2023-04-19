@@ -94,3 +94,5 @@ the symmetry numbers for the trianglimines can be taken as:
 
 Resulting differences to the Gibbs free energies of formation are within 5 kJ/mol,
 which is probably within the error of the method.
+
+![Macrocycle structures](data/symmetry.png)
