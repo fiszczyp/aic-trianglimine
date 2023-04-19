@@ -93,7 +93,10 @@ if __name__ == "__main__":
                     + n_imines * molecules[bbs["water"]].DFT_energy[method]
                 )
                 macrocycles[m.name][method] = {
-                    "Formation energy (kJ/mol)": round(to_kj(e_form), 2)
+                    "Formation energy (kJ/mol)": round(to_kj(e_form), 2),
+                    "Formation energy per imine (kJ/mol)": round(
+                        to_kj(e_form / n_imines), 2
+                    ),
                 }
 
                 # Sum of thermally corrected enthalpies, E(el)+dH
@@ -161,6 +164,8 @@ if __name__ == "__main__":
                             f"Formation Gibbs energy, sn={sn} (kJ/mol)": round(
                                 to_kj(g_form), 2
                             ),
+                            f"Formation Gibbs energy per imine, sn={sn}"
+                            " (kJ/mol)": round(to_kj(g_form / n_imines), 2),
                         }
                     )
 
