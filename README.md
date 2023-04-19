@@ -88,9 +88,9 @@ Depending on the degree if idealisation of the macrocycle structures,
 the symmetry numbers for the trianglimines can be taken as:
 
 * For [2+2]-RR: 1 (no symmetry), 2 (C2 bowl) or 4 (D2 planar aromatic rings).
-* For [2+2]-RR: 1 (no symmetry) or 2 (C2h).
+* For [2+2]-RS: 1 (no symmetry) or 2 (C2h).
 * For [3+3]-RRR: 1 (no symmetry), 3 (C3 bowl) or 6 (D3 planar aromatic rings).
-* For [3+3]-RRR: 1 (no symmetry) or 2 (C2).
+* For [3+3]-RRS: 1 (no symmetry) or 2 (C2).
 
 Resulting differences to the Gibbs free energies of formation are within 5 kJ/mol,
 which is probably within the error of the method.
