@@ -97,3 +97,21 @@ which is probably within the error of the method.
 
 See `plots.ipynb` for the corresponding bar charts.
 
+## Manual search for [4+4] inclusion complex with dioxane: `dioxane_templated`
+
+As the trianglimine was found to crystallise from dioxane as a [4+4] macrocycle
+with a dioxane molecule included in the macrocycle cavity, we also performed
+a conformer search for this inclusion complex.
+
+The lowest energy conformation identified for the [4+4]-RRRR macrocyle,
+following the workflow outline before, was a collapsed helicate without an
+internal cavity. The lowest energy "open" structure was found at 19.7 kJ/mol
+above the minimum in CREST calculations. Inside those structure, a molecule of
+dioxane was placed manually and the complex was optimised with GFN2-xTB to
+yield an input structure for a subsequent CREST search.
+
+In this case, CREST was run in the non-covalent interactions mode (`--nci`) to
+bias against dissociation of the complex. Eight conformers were found in which
+the dioxane molecule actually occupies the internal cavity created by the
+macrocycle (see `analyse_crest.py` for the filtering functions) and lowest
+energy conformer of those has been extracted as `crest_dioxane_templated.xyz`.
